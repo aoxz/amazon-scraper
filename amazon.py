@@ -23,7 +23,8 @@ def scrape(url):
 
     #! Download the page using requests
     print("Downloading %s" % url)
-    r = requests.get(url, headers = headers)
+    r = requests.get(url, headers=headers)
+
     #! Simple check to check if page was blocked (Usually 503)
     if r.status_code > 500:
         if "To discuss automated access to Amazon data please contact" in r.text:
@@ -33,15 +34,13 @@ def scrape(url):
             print("Page %s must have been blocked by Amazon as the status code was %d" % (
                 url, r.status_code))
         return None
-    #! Pass the HTML of the page and create
+
+    #!x Pass the HTML of the page and create
     return e.extract(r.text)
 
-
-#// product_data = []
 with open("urls.txt", 'r') as urllist, open('output.jsonl', 'w') as outfile:
     for url in urllist.read().splitlines():
         data = scrape(url)
         if data:
             json.dump(data, outfile)
             outfile.write("\n")
-            #// sleep(5)
