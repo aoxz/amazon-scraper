@@ -23,7 +23,7 @@ def scrape(url):
 
     #! Download the page using requests
     print("Downloading %s" % url)
-    r = requests.get(url, headers=headers)
+    r = requests.get(url, headers = headers)
 
     #! Simple check to check if page was blocked (Usually 503)
     if r.status_code > 500:
@@ -44,3 +44,4 @@ with open("urls.txt", 'r') as urllist, open('output.jsonl', 'w') as outfile:
         if data:
             json.dump(data, outfile)
             outfile.write("\n")
+            #sleep(5)
