@@ -42,6 +42,6 @@ with open("urls.txt", 'r') as urllist, open('output.jsonl', 'w') as outfile:
     for url in urllist.read().splitlines():
         data = scrape(url)
         if data:
-            json.dump(data, outfile)
+            json.dump(data, outfile, ensure_ascii=False)
             outfile.write("\n")
             #sleep(5)
