@@ -2,6 +2,7 @@ from selectorlib import Extractor
 import requests
 import json
 from time import sleep
+import os
 
 #! Create an Extractor by reading from the YAML file
 e = Extractor.from_yaml_file('selectors.yml')
@@ -22,7 +23,7 @@ def scrape(url):
     }
 
     #! Download the page using requests
-    print("Downloading %s" % url)
+    #print("Downloading %s" % url)
     r = requests.get(url, headers = headers)
 
     #! Simple check to check if page was blocked (Usually 503)
@@ -45,3 +46,5 @@ with open("urls.txt", 'r') as urllist, open('output.jsonl', 'w') as outfile:
             json.dump(data, outfile, ensure_ascii = False)
             outfile.write("\n")
             #sleep(5)
+
+os.system("cat output.jsonl | jtbl")
