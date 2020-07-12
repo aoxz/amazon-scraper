@@ -1,8 +1,8 @@
-name:
-    css: '#productTitle'
-    xpath: null
-    type: Text
 sales_rank:
     css: 'span.zg_hrsr_rank'
+    xpath: null
+    type: Text
+name:
+    css: '#productTitle'
     xpath: null
     type: Text
