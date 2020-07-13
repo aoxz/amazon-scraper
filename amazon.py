@@ -23,7 +23,7 @@ def scrape(url):
     }
 
     #! Download the page using requests
-    #print("Downloading %s" % url)
+    print("Downloading %s" % url)
     r = requests.get(url, headers = headers)
 
     #! Simple check to check if page was blocked (Usually 503)
@@ -47,4 +47,5 @@ with open("urls.txt", 'r') as urllist, open('output.jsonl', 'w') as outfile:
             outfile.write("\n")
             #sleep(5)
 
+os.system("clear")
 os.system("cat output.jsonl | jtbl")
